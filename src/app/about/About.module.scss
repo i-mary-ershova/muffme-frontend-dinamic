@@ -1,0 +1,217 @@
+@use '@/styles/variables.scss' as *;
+@use '@/styles/mixins.scss' as *;
+
+.main {
+  width: 100%;
+  margin-top: 80px; // To account for the fixed header
+  overflow: hidden;
+}
+
+// Hero section styles
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.heroImage {
+  object-fit: cover;
+  z-index: -2;
+}
+
+.heroGradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, $purple 0%, rgba($purple, 0) 50%);
+  z-index: -1;
+}
+
+.heroContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px;
+  height: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.logoContainer {
+  margin-bottom: 50px;
+}
+
+.logoAbout {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+}
+
+.heroTitle {
+  @include title-large;
+  color: white;
+  text-align: center;
+  margin-top: auto;
+  margin-bottom: 100px;
+  padding: 0 20px;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+// Container for main content
+.container {
+  max-width: 1312px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+// About section styles
+.aboutSection {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  margin: 80px 0;
+  
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+}
+
+.reverseSection {
+  flex-direction: row-reverse;
+  
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+}
+
+.imageContainer {
+  flex: 1;
+  
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+}
+
+.sectionImage {
+  width: 100%;
+  height: auto;
+  border-radius: 20px;
+  object-fit: cover;
+}
+
+.textContainer {
+  flex: 1;
+  
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+}
+
+.pinkBox {
+  background-color: $pink;
+  border-radius: 0 20px 20px 0;
+  padding: 40px;
+  
+  @media (max-width: 768px) {
+    border-radius: 20px;
+  }
+}
+
+.leftRounded {
+  border-radius: 20px 0 0 20px;
+  
+  @media (max-width: 768px) {
+    border-radius: 20px;
+  }
+}
+
+.sectionTitle {
+  @include title-large;
+  color: $darkred;
+  margin-bottom: 20px;
+}
+
+.sectionText {
+  @include body-thin;
+  white-space: pre-line;
+}
+
+// Image row styles
+.imageRow {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  margin: 40px 0;
+  
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+}
+
+.imageItem {
+  flex: 1;
+  
+  img {
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+    object-fit: cover;
+  }
+}
+
+// Mission section styles
+.missionSection {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 80px;
+}
+
+.missionImage {
+  object-fit: cover;
+  z-index: -2;
+}
+
+.missionGradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, $purple 0%, rgba($purple, 0) 50%);
+  z-index: -1;
+}
+
+.missionContent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+  padding: 0 20px;
+}
+
+.missionBox {
+  background-color: $pink;
+  border-radius: 20px;
+  padding: 40px;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: 40px;
+  
+  @media (max-width: 768px) {
+    margin-right: auto;
+    width: 100%;
+  }
+} 

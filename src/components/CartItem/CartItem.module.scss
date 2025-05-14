@@ -1,0 +1,132 @@
+@use '@/styles/variables.scss' as *;
+@use '@/styles/mixins.scss' as *;
+
+.cartItem {
+  display: flex;
+  background: white;
+  border-radius: 20px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  align-items: center;
+  
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 15px;
+  }
+}
+
+.imageContainer {
+  width: 120px;
+  height: 120px;
+  position: relative;
+  border-radius: 15px;
+  overflow: hidden;
+  margin-right: 20px;
+  
+  @media (max-width: 768px) {
+    width: 100px;
+    height: 100px;
+    margin-right: 0;
+  }
+}
+
+.details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-right: 20px;
+  
+  @media (max-width: 768px) {
+    width: 100%;
+    text-align: center;
+    margin-right: 0;
+  }
+}
+
+.title {
+  @include title-medium;
+  color: $darkred;
+}
+
+.price {
+  @include body-bold;
+  color: black;
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  
+  @media (max-width: 768px) {
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+
+.quantityControl {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background-color: #f5f5f5;
+  border-radius: 30px;
+  padding: 5px 15px;
+}
+
+.controlButton {
+  background-color: $darkred;
+  color: white;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: none;
+  font-size: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  
+  &:hover {
+    background-color: darken($darkred, 5%);
+  }
+}
+
+.quantity {
+  @include body-bold;
+}
+
+.itemTotal {
+  @include title-medium;
+  color: $darkred;
+  
+  @media (max-width: 768px) {
+    min-width: 80px;
+    text-align: right;
+  }
+}
+
+.removeButton {
+  background-color: transparent;
+  color: #c41e3a;
+  border: 2px solid #c41e3a;
+  border-radius: 12px;
+  padding: 8px 15px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  
+  &:hover {
+    background-color: #c41e3a;
+    color: white;
+  }
+  
+  @media (max-width: 768px) {
+    padding: 6px 12px;
+  }
+} 

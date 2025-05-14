@@ -1,0 +1,60 @@
+@use '@/styles/variables.scss' as *;
+
+.marqueeContainer {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  background-color: $light-color;
+  padding: 0px 0;
+  
+  // Добавляем псевдоэлементы для создания градиентных накладок
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 150px;
+    z-index: 2;
+    pointer-events: none;
+  }
+  
+  // Градиент слева (от цвета фона к прозрачному)
+  &::before {
+    left: 0;
+    background: linear-gradient(to right, $darkred, transparent);
+  }
+  
+  // Градиент справа (от прозрачного к цвету фона)
+  &::after {
+    right: 0;
+    background: linear-gradient(to left, $darkred, transparent);
+  }
+}
+
+.marqueeTrack {
+  display: flex;
+  animation: marquee 150s linear infinite;
+  width: fit-content;
+  position: relative;
+}
+
+.marqueeContent {
+  display: flex;
+  align-items: center;
+}
+
+.marqueeImage {
+  height: 40px;
+  width: auto;
+  margin-right: 0px;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}

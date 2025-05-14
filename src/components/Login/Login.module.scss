@@ -1,0 +1,119 @@
+@use '@/styles/variables.scss' as *;
+@use '@/styles/mixins.scss' as *;
+
+// .overlay {
+//   // position: fixed;
+//   // top: 0;
+//   // left: 0;
+//   // right: 0;
+//   // bottom: 0;
+//   /* Убираем z-index, так как он теперь контролируется родительским контейнером */
+// }
+
+
+.container {
+  position: fixed;
+  top: 60px; /* Позиционирование прямо под хедером (высота хедера) */
+  left: 0;
+  right: 0;
+  bottom: 0; /* Растягиваем контейнер на всю высоту страницы */
+  z-index: 900; /* Ниже хедера, но выше остального контента */
+  display: flex;
+  justify-content: center;
+}
+
+.innerContainer {
+  max-width: 1312px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start; /* Выравниваем бокс по верхнему краю */
+  height: 100%; /* Занимаем всю высоту родительского контейнера */
+}
+
+.box {
+  width: 400px;
+  height: 300px;
+  background-color: $lightpink;
+  border-radius: 20px 0px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 15px #7268c7;
+  margin-right: 60px; /* Отступ от правого края */
+  margin-top: 0; /* Прижимаем к верхнему краю */
+}
+
+.closeButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: $darkred;
+}
+
+.title {
+  @include title-large;
+  color: black;
+  margin-bottom: 20px;
+}
+
+.input {
+  width: 80%;
+  @include body-thin;
+  padding: 10px;
+  outline: none;
+  margin-bottom: 20px;
+  border: 1px solid $purple;
+  border-radius: 5px;
+}
+
+.button {
+  width: 80%;
+  @include body-thin;
+  padding: 10px;
+  background-color: $darkred; // Цвет кнопки
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  
+  &:disabled {
+    background-color: rgba(0, 0, 0, 0.0); // Цвет кнопки при отключении
+    cursor: not-allowed;
+    border: 1px solid $darkred;
+    color: $darkred;
+  }
+}
+
+.text {
+  @include body-thin;
+  color: black; 
+  margin-top: 20px;
+}
+
+.link {
+  @include body-thin;
+  color: $darkred; // Цвет ссылки
+  text-decoration: none;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline; // Подчеркивание при наведении
+  }
+}
+
+.error {
+  @include body-thin;
+  color: $darkred;
+  margin-top: 10px;
+  text-align: center;
+}
+
+  

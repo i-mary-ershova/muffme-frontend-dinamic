@@ -1,0 +1,113 @@
+@use '@/styles/variables.scss' as *;
+@use '@/styles/mixins.scss' as *;
+
+.cardContainer {
+  width: 28%;
+  width: 300px;
+  min-width: 300px;
+  aspect-ratio: 1;
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  text-decoration: none;
+  display: block;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+
+  @media (max-width: 768px) {
+    width: 80%;
+    //margin: 20px auto;
+  }
+}
+
+// Стили для компактного отображения
+.compactContainer {
+  width: 180px;
+  min-width: 180px;
+  margin: 0 5px;
+  aspect-ratio: 1;
+  flex-shrink: 0;
+  
+  &:hover {
+    transform: translateY(-3px);
+  }
+  
+  @media (max-width: 1024px) {
+    width: 130px;
+    min-width: 130px;
+  }
+  
+  @media (max-width: 768px) {
+    width: 110px;
+    min-width: 110px;
+  }
+}
+
+.card {
+  width: 100%;
+  height: 100%;
+  background-color: $pink;
+  border: 3px solid white;
+  border-radius: 30px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  padding: 100px;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 20px;
+  }
+}
+
+// Стили для компактной карточки
+.compactCard {
+  padding: 35px;
+  border-width: 2px;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  
+  img {
+    padding: 5px;
+  }
+}
+
+.label {
+  position: absolute;
+  bottom: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: white;
+  padding: 15px 30px;
+  border-radius: 20px;
+  white-space: nowrap;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+
+  span {
+    @include title-medium;
+    color: black;
+  }
+}
+
+// Стили для компактной метки
+.compactLabel {
+  bottom: -12px;
+  padding: 6px 10px;
+  border-radius: 10px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  
+  span {
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  
+  @media (max-width: 768px) {
+    font-size: 11px;
+    padding: 5px 8px;
+  }
+} 

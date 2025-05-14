@@ -1,0 +1,56 @@
+@use '@/styles/variables.scss' as *;
+
+.section {
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(to bottom, $purple, #d3bfff);
+  padding: 80px 20px;
+}
+
+.container {
+  max-width: 1312px;
+  margin: 0 auto;
+}
+
+.title {
+  text-align: left;
+  color: white;
+  font-size: 48px;
+  font-family: $font-kreadon;
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 60px 0 20px 0;
+}
+
+.loadingText {
+  text-align: center;
+  color: white;
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 30px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  justify-items: center;
+}
+
+@media (max-width: 1312px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 680px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 320px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+} 

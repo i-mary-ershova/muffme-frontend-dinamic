@@ -1,0 +1,133 @@
+@use '@/styles/variables.scss' as *;
+@use '@/styles/mixins.scss' as *;
+
+
+.cartContainer {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    //background: linear-gradient(to bottom, $purple, #d3bfff);
+    //padding: 40px 20px 80px;
+}
+
+.container {
+    max-width: 1312px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+// Для пустой корзины - карточки по центру
+.cardsContainer {
+    width: 100%;
+    max-width: 1312px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 100px;
+    padding: 40px 0px;
+  
+    @media (max-width: 768px) {
+      flex-direction: column;
+      gap: 100px;
+    }
+} 
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+    padding: 160px;
+    width: 100%;
+}
+
+.emptyMessage {
+    color: black;
+    font-size: 48px;
+    font-family: $font-kreadon;
+    font-weight: 700;
+    line-height: 1.2;
+    margin: 60px 0 20px 0;
+    text-align: center;
+    
+    @media (max-width: 768px) {
+        font-size: 32px;
+        margin: 40px 0 20px 0;
+    }
+}
+
+// Контейнер с двумя колонками: товары и правая колонка
+.cartContentContainer {
+    display: flex;
+    gap: 30px;
+    margin-top: 20px;
+    
+    @media (max-width: 1024px) {
+        flex-direction: column;
+    }
+}
+
+// Колонка со списком товаров
+.cartItemsContainer {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+// Правая колонка с карточками выбора и итоговым блоком
+.rightColumn {
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    
+    @media (max-width: 1024px) {
+        width: 100%;
+    }
+}
+
+// Обёртка для компактных карточек выбора в правой колонке
+.choiceCardsWrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    //background-color: rgba(255, 255, 255, 0.3);
+    //border-radius: 20px;
+    padding: 5px 0 15px 0;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    
+    &::-webkit-scrollbar {
+        height: 4px;
+    }
+    
+    &::-webkit-scrollbar-thumb {
+        background-color: rgba(255, 255, 255, 0.5);
+        border-radius: 2px;
+    }
+    
+    // Стили для вложенных карточек
+    :global(div[class*="cardContainer"]) {
+        margin-bottom: 0;
+        flex-shrink: 0;
+    }
+    
+    @media (max-width: 768px) {
+        padding: 10px;
+    }
+}
+
+// Контейнер для блока итоговой стоимости
+.cartSummaryContainer {
+    width: 100%;
+    position: sticky;
+    top: 20px;
+    
+    @media (max-width: 1024px) {
+        position: static;
+    }
+}

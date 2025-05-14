@@ -1,0 +1,294 @@
+@use '@/styles/variables.scss' as *;
+@use '@/styles/mixins.scss' as *;
+
+.header {
+    width: 100%;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: $purple;
+    height: 60px;
+    margin-bottom: 46px;
+}
+
+.container {
+    max-width: 1312px;
+    margin: 0 auto;
+    padding: 10px 20px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+
+.logo_img {
+    position: relative;
+    width: 182px; 
+    height: 50px;
+}
+
+.icons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: 15px;
+
+    &Icons {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        width: 40px;
+        height: 40px;
+    }
+}
+
+.wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navigation {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 25px 20px 10px;
+    background: $lightpink;
+    border-radius: 0 0 15px 15px;
+    position: absolute;
+    top: -15px;
+    right: 20px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.navigationLinks {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    
+    a {
+        @include body-bold;
+        text-decoration: none;
+        color: black;
+        padding: 5px 10px;
+        transition: color 0.3s;
+
+        &:hover {
+            color: $darkpurple; // Цвет при наведении
+        }
+    }
+}
+
+// Скрываем мобильные ссылки на десктопе
+.mobileLink {
+    display: none !important;
+}
+
+.loginButton {
+    background-color: rgba(0, 0, 0, 0.0);
+    border: none;
+    border-radius: 0px;
+    cursor: pointer;
+}
+
+// Бургер меню
+.burgerButton {
+    display: none;
+    width: 30px;
+    height: 24px;
+    position: relative;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    z-index: 1001;
+    transition: transform 0.3s ease-in-out;
+    
+    span {
+        display: block;
+        position: absolute;
+        height: 3px;
+        width: 100%;
+        background: white;
+        border-radius: 3px;
+        opacity: 1;
+        left: 0;
+        transform: rotate(0deg);
+        transition: .25s ease-in-out;
+        
+        &:nth-child(1) {
+            top: 0;
+        }
+        
+        &:nth-child(2) {
+            top: 10px;
+        }
+        
+        &:nth-child(3) {
+            top: 20px;
+        }
+    }
+    
+    &.active {
+        transform: translateX(100vw); // Отправляем кнопку за пределы экрана вправо
+        pointer-events: none; // Отключаем взаимодействие с кнопкой, когда она за экраном
+    }
+}
+
+// Стили для выпадающего меню пользователя
+.userMenu {
+    position: relative;
+    
+    &:hover .dropdown {
+        display: block;
+    }
+}
+
+.dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    display: none;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 8px 0;
+    min-width: 160px;
+    margin-top: 5px;
+    z-index: 1000;
+    
+    a {
+        display: block;
+        width: 100%;
+        text-decoration: none;
+    }
+    
+    button {
+        @include body-thin;
+        width: 100%;
+        text-align: left;
+        padding: 10px 15px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: $darkpurple;
+        transition: background-color 0.2s;
+        
+        &:hover {
+            background-color: $lightpink;
+            color: $darkred;
+        }
+    }
+}
+
+// Медиа-запрос для мобильных устройств
+@media (max-width: 768px) {
+    .burgerButton {
+        display: block;
+        transform: translateX(0); // Начальное положение
+        transition: transform 0.5s ease-in-out; // Делаем анимацию немного медленнее
+        position: relative;
+        z-index: 2000; // Увеличиваем z-index для отображения поверх других элементов
+        pointer-events: auto; // Включаем взаимодействие в начальном состоянии
+    }
+    
+    .navigation {
+        position: fixed;
+        top: 60px;
+        right: 0;
+        width: 400px;
+        max-width: 75%;
+        // height: auto;
+        background-color: $lightpink;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        padding: 20px;
+        border-radius: 20px 0 20px 20px;
+        box-shadow: 0 4px 15px $purple;
+        transform: translateX(100%);
+        opacity: 0;
+        margin-top: 0;
+        transition: transform 0.5s ease-in-out, opacity 0.4s ease-in-out; // Согласуем с анимацией бургера
+        
+        &.mobileMenuOpen {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+    
+    .navigationLinks {
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+        margin-bottom: 30px;
+        
+        a {
+            @include body-bold;
+            width: 100%;
+            padding: 12px 0;
+            font-size: 16px;
+            border-bottom: 1px solid rgba($purple, 0.2);
+            color: black;
+            
+            &:last-child {
+                border-bottom: none;
+            }
+            
+            &:hover {
+                color: $darkred;
+            }
+        }
+    }
+    
+    // Показываем мобильные ссылки в мобильном меню
+    .mobileLink {
+        display: block !important;
+    }
+    
+    // Скрываем иконки в мобильном меню, так как теперь используем текстовые ссылки
+    .icons {
+        display: none;
+    }
+    
+    .container {
+        padding: 10px 15px;
+    }
+    
+    .logo_img {
+        width: 140px;
+        height: 40px;
+    }
+    
+    .dropdown {
+        position: absolute;
+        top: 40px;
+        right: 0;
+        background-color: white;
+        border-radius: 5px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        padding: 8px;
+        min-width: 150px;
+        
+        button {
+            padding: 10px;
+            font-size: 14px;
+        }
+    }
+    
+    .loginButton {
+        padding: 5px;
+        margin: 0;
+    }
+    
+    .userMenu {
+        position: relative;
+        
+        &:hover .dropdown {
+            display: block;
+        }
+    }
+}

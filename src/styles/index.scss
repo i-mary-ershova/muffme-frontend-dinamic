@@ -1,0 +1,40 @@
+@use 'reset' as *;
+@use 'variables' as *;
+@use 'mixins' as *;
+@use 'fonts';
+@use 'node_modules/modern-normalize/modern-normalize.css';
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
+    //overflow-y: overlay;
+    font-family: $font-montserrat;
+  }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-kreadon;
+}
+
+.wrapper {
+    left: -10px;
+    right: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(to bottom, $purple, #d3bfff);
+}
+
+.container {
+    max-width: 1312px;
+    margin: 0 auto;
+}

@@ -1,0 +1,249 @@
+@use '@/styles/variables.scss' as *;
+@use '@/styles/mixins.scss' as *;
+
+.main {
+  margin-top: 100px; // Отступ для хедера
+  min-height: calc(100vh - 100px);
+  width: 100%;
+}
+
+.container {
+  max-width: 1312px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.title {
+  @include title-large;
+  color: $darkred;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.loading, .error {
+  text-align: center;
+  margin: 50px 0;
+  @include body-thin;
+}
+
+.error {
+  color: $darkred;
+}
+
+.content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  margin-top: 20px;
+}
+
+.profileSection {
+  flex: 1;
+  min-height: 450px;
+  background-color: $lightpink;
+  border-radius: 20px;
+  padding: 25px;
+}
+.ordersSection {
+  flex: 2;
+  min-width: 300px;
+  background-color: $lightpink;
+  border-radius: 20px;
+  padding: 25px;
+}
+
+.subtitle {
+  @include title-medium;
+  color: $darkred;
+  margin-bottom: 20px;
+}
+
+.profileData {
+  margin-bottom: 30px;
+  
+  p {
+    @include body-thin;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba($darkred, 0.1);
+    
+    &:last-child {
+      border-bottom: none;
+    }
+    
+    strong {
+      @include body-bold;
+      color: $darkred;
+      margin-right: 10px;
+    }
+  }
+}
+
+.bonusInfo {
+  background-color: rgba($darkred, 0.05);
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 30px;
+  
+  h3 {
+    @include body-bold;
+    color: $darkred;
+    margin-bottom: 10px;
+  }
+}
+
+.bonusAmount {
+  @include title-medium;
+  color: $darkred;
+  text-align: center;
+}
+
+.logoutButton {
+  @include body-bold;
+  background-color: transparent;
+  color: $darkred;
+  border: 1px solid $darkred;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: all 0.3s;
+  width: 100%;
+  margin: 90px 0 10px 0;
+  
+  &:hover {
+    background-color: $darkred;
+    color: white;
+  }
+}
+
+.ordersList {
+  p {
+    @include body-thin;
+    text-align: center;
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .content {
+    flex-direction: column;
+  }
+  
+  .profileSection, .ordersSection {
+    width: 100%;
+  }
+} 
+
+// Стили для страниц истории
+.pageHeader {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+  gap: 20px;
+}
+
+.backButton {
+  @include body-bold;
+  background: none;
+  border: none;
+  color: $darkred;
+  cursor: pointer;
+  font-size: 18px;
+  padding: 5px 10px;
+  
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.historyList {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 800px;
+}
+
+.historyItem {
+  background-color: $lightpink;
+  border-radius: 10px;
+  padding: 15px 20px;
+  transition: transform 0.2s;
+  
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.historyDate {
+  @include body-thin;
+  color: $darkred;
+  margin-bottom: 5px;
+}
+
+.historyDescription {
+  @include body-bold;
+  margin-bottom: 5px;
+}
+
+.historyAmount {
+  @include body-bold;
+  color: $darkred;
+  font-size: 18px;
+}
+
+.emptyHistory {
+  @include body-bold;
+  color: $purple;
+  text-align: center;
+  padding: 30px;
+  background-color: $lightpink;
+  border-radius: 10px;
+}
+
+.orderHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.orderStatus {
+  @include body-bold;
+  color: $darkpurple;
+  padding: 4px 10px;
+  background-color: rgba($purple, 0.2);
+  border-radius: 20px;
+  font-size: 14px;
+}
+
+.orderDetails {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.orderItems {
+  @include body-thin;
+  color: $darkred;
+}
+
+@media (max-width: 768px) {
+  .content {
+    flex-direction: column;
+  }
+  
+  .infoInput, .button, .logoutButton {
+    max-width: 100%;
+  }
+  
+  .orderDetails {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+  
+  .historyAmount {
+    margin-top: 5px;
+  }
+} 
